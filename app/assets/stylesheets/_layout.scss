@@ -1,3 +1,14 @@
+.main-container {
+  max-width: 920px;
+  margin: 24px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    padding: 0 12px;
+  }
+}
+
 .flex--row {
   display: flex;
   flex-direction: row;
