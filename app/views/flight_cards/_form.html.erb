@@ -1,0 +1,153 @@
+<!-- Flier name -->
+<div class="input-field">
+  <%= f.label :name, 'Flier Name' %>
+  <%= f.text_field :name %>
+</div>
+
+<!-- Memberships -->
+<label>Memberships</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[memberships][tra]', 'true', @flight_card.memberships['tra'] == 'true', class: 'filled-in' %>
+<!--  <input type="checkbox" name="flight_card[memberships][]" value="TRA" class="filled-in">-->
+  <span>TRA</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[memberships][nar]', 'true', @flight_card.memberships['nar'] == 'true', class: 'filled-in' %>
+  <span>NAR</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[memberships][soar]', 'true', @flight_card.memberships['soar'] == 'true', class: 'filled-in' %>
+  <span>SoAR</span>
+</label>
+<%= check_box_tag 'flight_card[memberships][nothing]', 'true', true, hidden: true %>
+
+<!-- Rocket info -->
+<div class="input-field">
+  <%= f.label :rocket_manufacturer %>
+  <%= f.text_field :rocket_manufacturer %>
+</div>
+<div class="input-field">
+  <%= f.label :rocket_name %>
+  <%= f.text_field :rocket_name %>
+</div>
+
+<!-- Rocket type -->
+<label>How was it made?</label><br/>
+<label>
+  <%= f.radio_button :rocket_type, 'Kit', class: 'with-gap' %>
+  <span>Kit</span>
+</label><br/>
+<label>
+  <%= f.radio_button :rocket_type, 'Scratch', class: 'with-gap' %>
+  <span>Scratch-built</span>
+</label><br/>
+<label>
+  <%= f.radio_button :rocket_type, 'Modification', class: 'with-gap' %>
+  <span>Modification</span>
+</label><br/>
+<label>
+  <%= f.radio_button :rocket_type, 'RTF', class: 'with-gap' %>
+  <span>Bought ready-to-fly</span>
+</label><br/>
+
+<!-- Stages -->
+<div class="input-field">
+  <%= f.label :stages %>
+  <%= f.telephone_field :stages %>
+</div>
+
+<!-- Cluster -->
+<div class="input-field">
+  <%= f.label :cluster %>
+  <%= f.telephone_field :cluster %>
+</div>
+
+<!-- Launch Guide -->
+<label>Launch Guide</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, '1/8', class: 'with-gap' %>
+  <span>1/8 in Launch Lug (Choose this if your rocket is small and you don't know)</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, '3/16', class: 'with-gap' %>
+  <span>3/16 in Launch Lug</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, '1/4', class: 'with-gap' %>
+  <span>1/4 in Launch Lug</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, 'Mini-Rail', class: 'with-gap' %>
+  <span>Mini-Rail</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, '10-10', class: 'with-gap' %>
+  <span>10-10 Rail</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, '15-15', class: 'with-gap' %>
+  <span>15-15 Rail</span>
+</label><br/>
+<label>
+  <%= f.radio_button :launch_guide, 'exotic', class: 'with-gap' %>
+  <span>Something exotic...</span>
+</label><br/>
+
+<!-- Motor info -->
+<div class="input-field">
+  <%= f.text_field :motor_manufacturer %>
+  <%= f.label :motor_manufacturer %>
+</div>
+<div class="input-field">
+  <%= f.text_field :motor, autocapitalize: 'characters' %>
+  <%= f.label :motor, 'Motor(s) (A8-3, C6-5, etc.)' %>
+</div>
+
+<!-- Recovery -->
+<label>Recovery</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][parachute]', 'true', @flight_card.recovery['parachute'] == 'true', class: 'filled-in' %>
+  <span>Parachute</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][streamer]', 'true', @flight_card.recovery['streamer'] == 'true', class: 'filled-in' %>
+  <span>Streamer</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][glider]', 'true', @flight_card.recovery['glider'] == 'true', class: 'filled-in' %>
+  <span>Glider(s)</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][tumble]', 'true', @flight_card.recovery['tumble'] == 'true', class: 'filled-in' %>
+  <span>Tumble</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][helicopter]', 'true', @flight_card.recovery['helicopter'] == 'true', class: 'filled-in' %>
+  <span>Helicopter(s)</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[recovery][other]', 'true', @flight_card.recovery['other'] == 'true', class: 'filled-in' %>
+  <span>Other</span>
+</label><br/>
+
+<!-- Recovery notes -->
+<div class="input-field">
+  <%= f.text_field :chute_release %>
+  <%= f.label :chute_release, "Main or chute release altitude (ft) - (don't know: skip)" %>
+</div>
+
+<!-- Other info -->
+<label>About your flight...</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[flight_info][first_flight]', 'true', @flight_card.flight_info['first_flight'] == 'true', class: 'filled-in' %>
+  <span>Rocket's First Flight</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[flight_info][heads_up]', 'true', @flight_card.flight_info['heads_up'] == 'true', class: 'filled-in' %>
+  <span>Heads up</span>
+</label><br/>
+<label>
+  <%= check_box_tag 'flight_card[flight_info][first_time_flier]', 'true', @flight_card.flight_info['first_time_flier'] == 'true', class: 'filled-in' %>
+  <span>This is the first time I've launched a rocket! (Congratulations!)</span>
+</label><br/>
+<%= check_box_tag 'flight_card[flight_info][nothing]', 'true', true, hidden: true %>

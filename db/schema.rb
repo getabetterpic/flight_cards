@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_211605) do
+ActiveRecord::Schema.define(version: 2020_05_11_205904) do
+
+  create_table "flight_cards", force: :cascade do |t|
+    t.string "name", null: false
+    t.json "memberships", default: {}
+    t.string "rocket_name", default: ""
+    t.string "rocket_manufacturer", default: ""
+    t.string "rocket_type"
+    t.integer "stages", default: 1
+    t.integer "cluster", default: 1
+    t.string "launch_guide"
+    t.string "motor_manufacturer"
+    t.string "motor"
+    t.json "recovery", default: {}
+    t.text "chute_release"
+    t.json "flight_info", default: {}
+    t.boolean "rso_approved", default: false
+    t.string "pad_assignment"
+    t.boolean "flown", default: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_flight_cards_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "role", null: false
