@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, :role, presence: true
   validates :role, inclusion: %w[flier rso lco launch_admin]
+
+  has_many :flight_cards
 end

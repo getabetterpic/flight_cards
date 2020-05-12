@@ -1,0 +1,7 @@
+<h2>New Flight Card</h2>
+
+<%= form_with model: @flight_card do |form| %>
+  <%= render partial: 'form', locals: {f: form} %>
+  <%= form.submit 'Create', class: 'btn' %>
+  <%= link_to 'Cancel', flight_cards_path, class: 'btn-flat' %>
+<% end %>
