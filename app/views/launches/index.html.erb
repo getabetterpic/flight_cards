@@ -1,0 +1,6 @@
+<%= link_to 'Create New Launch', new_launch_path, class: 'btn' %>
+<div class="collection">
+  <% @launches.each do |launch| %>
+    <%= link_to launch.name, edit_launch_path(launch), class: 'collection-item' %>
+  <% end %>
+</div>

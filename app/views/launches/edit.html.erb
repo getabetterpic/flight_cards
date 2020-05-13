@@ -1,0 +1,7 @@
+<h2>Edit Launch</h2>
+
+<%= form_with model: @launch, method: 'PATCH' do |form| %>
+  <%= render partial: 'form', locals: { f: form } %>
+  <%= form.submit 'Update', class: 'btn' %>
+  <%= link_to 'Cancel', launches_path, class: 'btn-flat' %>
+<% end %>

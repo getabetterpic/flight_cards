@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :role, inclusion: %w[flier rso lco launch_admin]
 
   has_many :flight_cards
+  has_many :launches, foreign_key: :admin_id
 end
