@@ -3,4 +3,6 @@ class Launch < ApplicationRecord
   belongs_to :admin, class_name: 'User'
   has_secure_password :rso, validations: false
   has_secure_password :lco, validations: false
+
+  has_many :flight_cards
 end
