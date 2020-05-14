@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   has_many :flight_cards
   has_many :launches, foreign_key: :admin_id
+
+  def launch_admin?
+    role&.to_sym == :launch_admin
+  end
 end

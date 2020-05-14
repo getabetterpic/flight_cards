@@ -4,10 +4,12 @@ class LaunchesController < ApplicationController
 
   def new
     @launch = current_user.launches.new
+    authorize @launch
   end
 
   def create
     @launch = current_user.launches.new(launch_params)
+    authorize @launch
     if @launch.save
       redirect_to launches_path
     else
@@ -15,9 +17,12 @@ class LaunchesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @launch
+  end
 
   def update
+    authorize @launch
     if @launch.update(launch_params)
       redirect_to launches_path
     else
@@ -26,7 +31,7 @@ class LaunchesController < ApplicationController
   end
 
   def index
-    @launches = current_user.launches
+    @launches = Launch.all
   end
 
   private
