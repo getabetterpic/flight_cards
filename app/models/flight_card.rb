@@ -5,4 +5,6 @@ class FlightCard < ApplicationRecord
   belongs_to :launch
 
   scope :not_flown, -> { where.not(flown: true) }
+  scope :not_rso_approved, -> { where.not(rso_approved: true) }
+  scope :waiting_for_rso, -> { not_flown.not_rso_approved }
 end
