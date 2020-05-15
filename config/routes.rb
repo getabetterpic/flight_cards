@@ -14,4 +14,16 @@ Rails.application.routes.draw do
     put ':flight_card_id', to: 'rso#update'
     patch ':flight_card_id', to: 'rso#update', as: :update_rso_card
   end
+
+  scope :lco do
+    get 'launches', to: 'lco#launches', as: :lco_launches
+    get 'launches/:id', to: 'lco#new_lco', as: :sign_in_lco
+    post 'launches/:id', to: 'lco#signin_lco'
+
+    get '', to: 'lco#index', as: :lco_cards
+    get ':flight_card_id/edit', to: 'lco#edit', as: :edit_lco_card
+    put ':flight_card_id', to: 'lco#update'
+    patch ':flight_card_id', to: 'lco#update', as: :update_lco_card
+    delete ':flight_card_id', to: 'lco#reset', as: :reset_lco_card
+  end
 end

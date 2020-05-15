@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">
+      <%= @flight_card.name %>
+    </span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">
+      <%= @flight_card.rocket_manufacturer %> <%= @flight_card.rocket_name %>
+    </span>
+    <dl class="margins-removed">
+      <dt>Pad</dt>
+      <dd><%= @flight_card.pad_assignment %></dd>
+      <dt>Motors</dt>
+      <dd><%= @flight_card.motor %></dd>
+      <dt>Rocket Type</dt>
+      <dd><%= @flight_card.rocket_type %></dd>
+      <dt>Stages</dt>
+      <dd><%= @flight_card.stages %></dd>
+      <dt>Cluster</dt>
+      <dd><%= @flight_card.cluster %></dd>
+      <dt>Launch Guide</dt>
+      <dd><%= @flight_card.launch_guide %></dd>
+      <dt>Recovery</dt>
+      <dd><%= (@flight_card.recovery&.keys || []).map { |r| r.titleize }.join(', ') %></dd>
+      <dt>Notes</dt>
+      <dd><%= @flight_card.chute_release %></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">LCO</span>
+    <!-- Good Flight -->
+    <%= form_with model: @flight_card, url: update_lco_card_path, method: :patch do |f| %>
+      <button type="submit" class="waves-effect waves-light btn">Good Flight</button>
+    <% end %>
+
+    <!-- Reset -->
+    <%= form_with model: @flight_card, url: update_lco_card_path, method: :delete do |f| %>
+      <button type="submit" class="waves-effect waves-light btn red">Reset</button>
+    <% end %>
+  </div>
+</div>
