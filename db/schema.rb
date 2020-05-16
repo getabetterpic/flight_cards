@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_05_14_121948) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "flight_cards", force: :cascade do |t|
     t.string "name", null: false
     t.json "memberships", default: {}
@@ -29,10 +32,10 @@ ActiveRecord::Schema.define(version: 2020_05_14_121948) do
     t.boolean "rso_approved", default: false
     t.string "pad_assignment"
     t.boolean "flown", default: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "launch_id"
+    t.bigint "launch_id"
     t.index ["launch_id"], name: "index_flight_cards_on_launch_id"
     t.index ["user_id"], name: "index_flight_cards_on_user_id"
   end
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_121948) do
     t.datetime "date"
     t.string "location"
     t.string "name", null: false
-    t.integer "admin_id", null: false
+    t.bigint "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "rso_digest"
