@@ -41,6 +41,6 @@ class LaunchesController < ApplicationController
   end
 
   def launch_params
-    params.require(:launch).permit(:date, :name, :location)
+    params.require(:launch).permit(:date, :name, :location, :lco, :rso)
   end
 end

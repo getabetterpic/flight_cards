@@ -3,11 +3,12 @@ class FlightCardsController < ApplicationController
   before_action :load_flight_card, only: %i[edit update]
 
   def new
+    session[:launch_id] = params[:launch] if params[:launch]
     @flight_card = current_user.flight_cards.new
   end
 
   def create
-    @flight_card = current_user.flight_cards.new(flight_card_params)
+    @flight_card = current_user.flight_cards.new(flight_card_params.merge(launch_id: session[:launch_id]))
     if @flight_card.save
       redirect_to flight_cards_path
     else
