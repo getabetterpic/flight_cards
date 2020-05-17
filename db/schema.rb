@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_121948) do
+ActiveRecord::Schema.define(version: 2020_05_17_125223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2020_05_14_121948) do
     t.text "chute_release"
     t.json "flight_info", default: {}
     t.boolean "rso_approved", default: false
-    t.string "pad_assignment"
     t.boolean "flown", default: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "launch_id"
+    t.integer "pad_assignment"
     t.index ["launch_id"], name: "index_flight_cards_on_launch_id"
     t.index ["user_id"], name: "index_flight_cards_on_user_id"
   end
