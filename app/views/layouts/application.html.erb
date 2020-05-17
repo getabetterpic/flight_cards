@@ -16,11 +16,14 @@
     <nav>
       <div class="nav-wrapper">
         <a href="/" class="brand-logo">Flight Cards</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <% if current_user %>
             <li>
               <%= link_to 'Flight Cards', flight_cards_path %>
+            </li>
+            <li>
+              <%= link_to 'Launches', launches_path %>
             </li>
             <li>
               <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
@@ -34,10 +37,13 @@
       </div>
     </nav>
 
-    <ul class="sidenav" id="mobile-demo">
+    <ul class="sidenav" id="slide-out">
       <% if current_user %>
         <li>
           <%= link_to 'Flight Cards', flight_cards_path %>
+        </li>
+        <li>
+          <%= link_to 'Launches', launches_path %>
         </li>
         <li>
           <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
