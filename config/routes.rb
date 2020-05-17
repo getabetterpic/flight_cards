@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'root#index'
-  resources :flight_cards, only: %i[new create edit update index]
+  resources :flight_cards do
+    post 'duplicate', on: :member, to: 'flight_cards#duplicate', as: :duplicate
+  end
   resources :launches
 
   scope :rso do

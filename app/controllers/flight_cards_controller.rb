@@ -1,6 +1,6 @@
 class FlightCardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_flight_card, only: %i[edit update]
+  before_action :load_flight_card, only: %i[edit update duplicate show]
 
   def new
     session[:launch_id] = params[:launch] if params[:launch]
@@ -16,8 +16,24 @@ class FlightCardsController < ApplicationController
     end
   end
 
+  def duplicate
+    @new_flight_card = current_user.flight_cards.new(
+      @flight_card.attributes.with_indifferent_access.slice(
+        :name, :rocket_manufacturer, :rocket_name, :rocket_type,
+        :stages, :cluster, :launch_guide, :motor_manufacturer, :motor,
+        :chute_release, :recovery, :launch_id
+      )
+    )
+    if @new_flight_card.save!
+      redirect_to edit_flight_card_path(@new_flight_card)
+    else
+      redirect_to flight_cards_path
+    end
+  end
+
   def index
-    @flight_cards = current_user.flight_cards.not_flown
+    @flight_cards = current_user.flight_cards.for_launch(session[:launch_id]).not_flown
+    @flown = current_user.flight_cards.for_launch(session[:launch_id]).flown
   end
 
   def edit; end
