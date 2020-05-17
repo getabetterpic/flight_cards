@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Flier Info</span>
+    <dl class="margins-removed">
+      <dt>Name</dt>
+      <dd><%= @flight_card.name %></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Rocket Info</span>
+    <dl class="margins-removed">
+      <dt>Rocket</dt>
+      <dd><%= @flight_card.rocket_manufacturer %> <%= @flight_card.rocket_name %></dd>
+      <dt>Motors</dt>
+      <dd><%= @flight_card.motor %></dd>
+      <dt>Rocket Type</dt>
+      <dd><%= @flight_card.rocket_type %></dd>
+      <dt>Stages</dt>
+      <dd><%= @flight_card.stages %></dd>
+      <dt>Cluster</dt>
+      <dd><%= @flight_card.cluster %></dd>
+      <dt>Launch Guide</dt>
+      <dd><%= @flight_card.launch_guide %></dd>
+      <dt>Recovery</dt>
+      <dd><%= (@flight_card.recovery&.keys || []).map { |r| r.titleize }.join(', ') %></dd>
+      <dt>Notes</dt>
+      <dd><%= @flight_card.chute_release %></dd>
+    </dl>
+  </div>
+</div>
+
+<%= link_to 'Duplicate', duplicate_flight_card_path(@flight_card), method: :post, class: 'btn' %>
