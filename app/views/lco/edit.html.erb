@@ -37,12 +37,14 @@
     <span class="card-title">LCO</span>
     <!-- Good Flight -->
     <%= form_with model: @flight_card, url: update_lco_card_path, method: :patch do |f| %>
-      <button type="submit" class="waves-effect waves-light btn">Good Flight</button>
+      <button type="submit" class="waves-effect waves-light btn">Flown</button>
     <% end %>
+
+    <%= link_to 'Not Flown', lco_cards_path, class: 'btn' %>
 
     <!-- Reset -->
     <%= form_with model: @flight_card, url: update_lco_card_path, method: :delete do |f| %>
-      <button type="submit" class="waves-effect waves-light btn red">Reset</button>
+      <button type="submit" class="waves-effect waves-light btn red">Back to RSO</button>
     <% end %>
   </div>
 </div>
