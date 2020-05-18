@@ -1,16 +1,18 @@
 class FlightCardsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_flight_card, only: %i[edit update duplicate show]
+  before_action :set_launch_session
 
   def new
-    session[:launch_id] = params[:launch] if params[:launch]
     @flight_card = current_user.flight_cards.new
   end
 
   def create
-    @flight_card = current_user.flight_cards.new(flight_card_params.merge(launch_id: session[:launch_id]))
+    @flight_card = current_user.flight_cards.new(
+      flight_card_params.merge(launch_id: params[:launch_id])
+    )
     if @flight_card.save
-      redirect_to flight_cards_path
+      redirect_to launch_flight_cards_path(params[:launch_id])
     else
       render :new, alert: 'Something went wrong.'
     end
@@ -25,28 +27,32 @@ class FlightCardsController < ApplicationController
       )
     )
     if @new_flight_card.save!
-      redirect_to edit_flight_card_path(@new_flight_card)
+      redirect_to edit_launch_flight_card_path(@new_flight_card)
     else
-      redirect_to flight_cards_path
+      redirect_to launch_flight_cards_path
     end
   end
 
   def index
-    @flight_cards = current_user.flight_cards.for_launch(session[:launch_id]).not_flown
-    @flown = current_user.flight_cards.for_launch(session[:launch_id]).flown
+    @flight_cards = current_user.flight_cards.for_launch(params[:launch_id]).not_flown
+    @flown = current_user.flight_cards.for_launch(params[:launch_id]).flown
   end
 
   def edit; end
 
   def update
     if @flight_card.update(flight_card_params)
-      redirect_to flight_cards_path
+      redirect_to launch_flight_cards_path
     else
       render :edit, alert: 'Something went wrong.'
     end
   end
 
   private
+
+  def set_launch_session
+    session[:launch_id] = params[:launch_id]
+  end
 
   def load_flight_card
     @flight_card = current_user.flight_cards.find(params[:id])

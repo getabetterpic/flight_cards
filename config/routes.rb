@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'root#index'
-  resources :flight_cards do
-    post 'duplicate', on: :member, to: 'flight_cards#duplicate', as: :duplicate
+
+  resources :launches do
+    resources :flight_cards do
+      post 'duplicate', on: :member, to: 'flight_cards#duplicate', as: :duplicate
+    end
   end
-  resources :launches
 
   scope :rso do
     get 'launches', to: 'rso#launches', as: :rso_launches
