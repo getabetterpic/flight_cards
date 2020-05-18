@@ -50,6 +50,6 @@ class LcoController < ApplicationController
   def authenticate_lco!
     @launch = Launch.find_by!(id: session[:launch_id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to rso_launches_path
+    redirect_to lco_launches_path
   end
 end
