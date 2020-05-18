@@ -1,11 +1,11 @@
 <div class="collection with-header">
   <div class="collection-header">Waiting Approval</div>
   <% @flight_cards.each do |card| %>
-    <%= link_to "#{card.name} - #{card.rocket_name}", edit_rso_card_path(card), class: 'collection-item' %>
+    <%= link_to "#{card.name} - #{card.rocket_name}", launch_edit_rso_card_path(params[:launch_id], card), class: 'collection-item' %>
   <% end %>
   <div class="collection-header">Approved</div>
   <% @approved.each do |card| %>
-    <%= link_to edit_rso_card_path(card), class: 'collection-item' do %>
+    <%= link_to launch_edit_rso_card_path(params[:launch_id], card), class: 'collection-item' do %>
       <%= "#{card.name} - #{card.rocket_name}" %>
       <span class="badge"><%= card.pad_assignment %></span>
     <% end %>

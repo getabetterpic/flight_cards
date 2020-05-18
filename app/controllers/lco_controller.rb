@@ -7,16 +7,14 @@ class LcoController < ApplicationController
     @flown = @launch.flight_cards.where(flown: true)
   end
 
-  def edit; end
-
   def update
-    @flight_card.update!(flown: true)
-    redirect_to lco_cards_path
+    @flight_card.update!(flown: params[:flight_card][:flown])
+    redirect_to launch_lco_cards_path(@launch)
   end
 
   def reset
-    @flight_card.update!(rso_approved: false, pad_assignment: nil)
-    redirect_to lco_cards_path
+    @flight_card.update!(rso_approved: false, pad_assignment: nil, flown: false)
+    redirect_to launch_lco_cards_path(@launch)
   end
 
   def launches
@@ -24,14 +22,15 @@ class LcoController < ApplicationController
   end
 
   def new_lco
-    @launch = Launch.find(params[:id])
+    @launch = Launch.find(params[:launch_id])
   end
 
   def signin_lco
-    @launch = Launch.find(params[:id])
+    @launch = Launch.find(params[:launch_id])
     if @launch&.authenticate_lco(params[:lco_key])
       session[:launch_id] = @launch.id
-      redirect_to lco_cards_path
+      session[:lco_login] = true
+      redirect_to launch_lco_cards_path(@launch)
     else
       render :new_lco, alert: 'Something went wrong.'
     end
@@ -44,12 +43,12 @@ class LcoController < ApplicationController
   end
 
   def load_flight_card
-    @flight_card = FlightCard.find(params[:flight_card_id])
+    @flight_card = @launch.flight_cards.find(params[:flight_card_id])
   end
 
   def authenticate_lco!
     @launch = Launch.find_by!(id: session[:launch_id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to rso_launches_path
+    redirect_to lco_launches_path
   end
 end

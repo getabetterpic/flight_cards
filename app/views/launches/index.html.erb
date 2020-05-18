@@ -6,7 +6,7 @@
     <% if policy(launch).update? %>
       <%= link_to launch.name, edit_launch_path(launch), class: 'collection-item' %>
     <% else %>
-      <%= link_to launch.name, new_flight_card_path(launch: launch.id), class: 'collection-item' %>
+      <%= link_to launch.name, new_launch_flight_card_path(launch), class: 'collection-item' %>
     <% end %>
   <% end %>
 </div>
