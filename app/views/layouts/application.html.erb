@@ -29,15 +29,19 @@
               <%= link_to 'Launches', launches_path %>
             </li>
             <li>
-              <%= link_to 'RSO', rso_launches_path %>
+              <%= link_to 'RSO', session[:rso_login] ? launch_rso_cards_path(session[:launch_id]) : rso_launches_path %>
             </li>
             <li>
-              <%= link_to 'LCO', lco_launches_path %>
+              <%= link_to 'LCO', session[:lco_login] ? launch_lco_cards_path(session[:launch_id]) : lco_launches_path %>
             </li>
             <li>
               <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
             </li>
           <% else %>
+            <% if session[:launch_id].present? %>
+              <li><%= link_to 'RSO', launch_rso_cards_path(session[:launch_id]) %></li>
+              <li><%= link_to 'LCO', launch_lco_cards_path(session[:launch_id]) %></li>
+            <% end %>
             <li>
               <%= link_to 'Sign In', new_user_session_path %>
             </li>
@@ -57,15 +61,19 @@
           <%= link_to 'Launches', launches_path %>
         </li>
         <li>
-          <%= link_to 'RSO', rso_launches_path %>
+          <%= link_to 'RSO', session[:rso_login] ? launch_rso_cards_path(session[:launch_id]) : rso_launches_path %>
         </li>
         <li>
-          <%= link_to 'LCO', lco_launches_path %>
+          <%= link_to 'LCO', session[:lco_login] ? launch_lco_cards_path(session[:launch_id]) : lco_launches_path %>
         </li>
         <li>
           <%= link_to 'Sign Out', destroy_user_session_path, method: 'delete' %>
         </li>
       <% else %>
+        <% if session[:launch_id].present? %>
+          <li><%= link_to 'RSO', launch_rso_cards_path(session[:launch_id]) %></li>
+          <li><%= link_to 'LCO', launch_lco_cards_path(session[:launch_id]) %></li>
+        <% end %>
         <li>
           <%= link_to 'Sign In', new_user_session_path %>
         </li>

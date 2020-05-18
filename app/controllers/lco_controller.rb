@@ -8,7 +8,7 @@ class LcoController < ApplicationController
   end
 
   def update
-    @flight_card.update!(flown: params[:flown])
+    @flight_card.update!(flown: params[:flight_card][:flown])
     redirect_to launch_lco_cards_path(@launch)
   end
 
@@ -29,6 +29,7 @@ class LcoController < ApplicationController
     @launch = Launch.find(params[:launch_id])
     if @launch&.authenticate_lco(params[:lco_key])
       session[:launch_id] = @launch.id
+      session[:lco_login] = true
       redirect_to launch_lco_cards_path(@launch)
     else
       render :new_lco, alert: 'Something went wrong.'

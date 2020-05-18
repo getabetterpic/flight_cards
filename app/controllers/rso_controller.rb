@@ -30,6 +30,7 @@ class RsoController < ApplicationController
     @launch = Launch.find(params[:launch_id])
     if @launch&.authenticate_rso(params[:rso_key])
       session[:launch_id] = @launch.id
+      session[:rso_login] = true
       redirect_to launch_rso_cards_path(@launch)
     else
       render :new_rso, alert: 'Something went wrong.'
