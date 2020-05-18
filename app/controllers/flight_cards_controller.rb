@@ -27,9 +27,9 @@ class FlightCardsController < ApplicationController
       )
     )
     if @new_flight_card.save!
-      redirect_to edit_launch_flight_card_path(@new_flight_card)
+      redirect_to edit_launch_flight_card_path(params[:launch_id], @new_flight_card)
     else
-      redirect_to launch_flight_cards_path
+      redirect_to launch_flight_cards_path(params[:launch_id])
     end
   end
 
@@ -38,11 +38,9 @@ class FlightCardsController < ApplicationController
     @flown = current_user.flight_cards.for_launch(params[:launch_id]).flown
   end
 
-  def edit; end
-
   def update
     if @flight_card.update(flight_card_params)
-      redirect_to launch_flight_cards_path
+      redirect_to launch_flight_cards_path(params[:launch_id])
     else
       render :edit, alert: 'Something went wrong.'
     end

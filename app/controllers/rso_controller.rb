@@ -49,6 +49,6 @@ class RsoController < ApplicationController
   def authenticate_rso!
     @launch ||= Launch.find_by!(id: session[:launch_id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to rso_launches_path
+    redirect_to launch_sign_in_rso_path
   end
 end

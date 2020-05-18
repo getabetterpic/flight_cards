@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
     scope :rso do
       get '', on: :collection, to: 'rso#launches', as: :rso
-      get 'new', to: 'rso#new_rso'
-      post '', to: 'rso#signin_rso', as: :sign_in_rso
+      get 'new', to: 'rso#new_rso', as: :sign_in_rso
+      post 'new', to: 'rso#signin_rso'
 
       get '', to: 'rso#index', as: :rso_cards
       get 'flight_cards/:flight_card_id/edit', to: 'rso#edit', as: :edit_rso_card

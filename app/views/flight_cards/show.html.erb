@@ -32,4 +32,4 @@
   </div>
 </div>
 
-<%= link_to 'Duplicate', duplicate_flight_card_path(@flight_card), method: :post, class: 'btn' %>
+<%= link_to 'Duplicate', duplicate_launch_flight_card_path(params[:launch_id], @flight_card), method: :post, class: 'btn' %>

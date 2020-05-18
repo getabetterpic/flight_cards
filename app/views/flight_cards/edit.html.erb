@@ -1,7 +1,7 @@
 <h2>Edit Flight Card</h2>
 
-<%= form_with model: @flight_card do |form| %>
+<%= form_with model: @flight_card, url: launch_flight_card_path(params[:launch_id]) do |form| %>
   <%= render partial: 'form', locals: {f: form} %>
   <%= form.submit 'Update', class: 'btn' %>
-  <%= link_to 'Back', flight_cards_path, class: 'btn-flat' %>
+  <%= link_to 'Back', launch_flight_cards_path, class: 'btn-flat' %>
 <% end %>
