@@ -8,12 +8,12 @@ class LcoController < ApplicationController
   end
 
   def update
-    @flight_card.update!(flown: true)
+    @flight_card.update!(flown: params[:flown])
     redirect_to launch_lco_cards_path(@launch)
   end
 
   def reset
-    @flight_card.update!(rso_approved: false, pad_assignment: nil)
+    @flight_card.update!(rso_approved: false, pad_assignment: nil, flown: false)
     redirect_to launch_lco_cards_path(@launch)
   end
 

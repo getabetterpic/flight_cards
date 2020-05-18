@@ -37,10 +37,14 @@
     <span class="card-title">LCO</span>
     <!-- Good Flight -->
     <%= form_with model: @flight_card, url: launch_update_lco_card_path, method: :patch do |f| %>
+      <%= f.hidden_field :flown, value: true %>
       <button type="submit" class="waves-effect waves-light btn">Flown</button>
     <% end %>
 
-    <%= link_to 'Not Flown', launch_lco_cards_path, class: 'btn' %>
+    <%= form_with model: @flight_card, url: launch_update_lco_card_path, method: :patch do |f| %>
+      <%= f.hidden_field :flown, value: false %>
+      <button type="submit" class="waves-effect waves-light btn">Not Flown</button>
+    <% end %>
 
     <!-- Reset -->
     <%= form_with model: @flight_card, url: launch_update_lco_card_path, method: :delete do |f| %>
