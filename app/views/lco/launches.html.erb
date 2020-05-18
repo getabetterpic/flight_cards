@@ -1,5 +1,5 @@
 <div class="collection">
   <% @launches.each do |launch| %>
-    <%= link_to launch.name, sign_in_lco_path(launch), class: 'collection-item' %>
+    <%= link_to launch.name, launch_sign_in_lco_path(launch), class: 'collection-item' %>
   <% end %>
 </div>

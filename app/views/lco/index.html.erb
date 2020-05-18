@@ -1,14 +1,14 @@
 <div class="collection with-header">
   <div class="collection-header">Waiting for Flight</div>
   <% @flight_cards.each do |card| %>
-    <%= link_to edit_lco_card_path(card), class: 'collection-item' do %>
+    <%= link_to launch_edit_lco_card_path(params[:launch_id], card), class: 'collection-item' do %>
       <%= "#{card.name} - #{card.rocket_name}" %>
       <span class="badge"><%= card.pad_assignment %></span>
     <% end %>
   <% end %>
   <div class="collection-header">Flown</div>
   <% @flown.each do |card| %>
-    <%= link_to edit_lco_card_path(card), class: 'collection-item' do %>
+    <%= link_to launch_edit_lco_card_path(params[:launch_id], card), class: 'collection-item' do %>
       <%= "#{card.name} - #{card.rocket_name}" %>
       <span class="badge"><%= card.pad_assignment %></span>
     <% end %>
