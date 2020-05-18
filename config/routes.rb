@@ -6,17 +6,17 @@ Rails.application.routes.draw do
     resources :flight_cards do
       post 'duplicate', on: :member, to: 'flight_cards#duplicate', as: :duplicate
     end
-  end
 
-  scope :rso do
-    get 'launches', to: 'rso#launches', as: :rso_launches
-    get 'launches/:id', to: 'rso#new_rso', as: :sign_in_rso
-    post 'launches/:id', to: 'rso#signin_rso'
+    scope :rso do
+      get '', on: :collection, to: 'rso#launches', as: :rso
+      get 'new', to: 'rso#new_rso'
+      post '', to: 'rso#signin_rso', as: :sign_in_rso
 
-    get '', to: 'rso#index', as: :rso_cards
-    get ':flight_card_id/edit', to: 'rso#edit', as: :edit_rso_card
-    put ':flight_card_id', to: 'rso#update'
-    patch ':flight_card_id', to: 'rso#update', as: :update_rso_card
+      get '', to: 'rso#index', as: :rso_cards
+      get 'flight_cards/:flight_card_id/edit', to: 'rso#edit', as: :edit_rso_card
+      put 'flight_cards/:flight_card_id', to: 'rso#update'
+      patch 'flight_cards/:flight_card_id', to: 'rso#update', as: :update_rso_card
+    end
   end
 
   scope :lco do
