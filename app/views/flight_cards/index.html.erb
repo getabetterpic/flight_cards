@@ -2,7 +2,10 @@
 <div class="collection with-header">
   <div class="collection-header">Waiting to fly</div>
   <% @flight_cards.each do |fc| %>
-    <%= link_to fc.rocket_name, edit_launch_flight_card_path(params[:launch_id], fc), class: 'collection-item' %>
+    <%= link_to edit_launch_flight_card_path(params[:launch_id], fc), class: 'collection-item' do %>
+      <%= fc.rocket_name %>
+      <span class="badge"><%= fc.pad_assignment %></span>
+    <% end %>
   <% end %>
   <div class="collection-header">Flown</div>
   <% @flown.each do |fc| %>
