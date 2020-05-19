@@ -1,0 +1,42 @@
+.flash-container {
+  position: absolute;
+  top: 64px;
+  left: calc(50vw - 150px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+
+  .flash {
+    padding: 12px;
+    margin-bottom: 12px;
+    width: 300px;
+    text-align: center;
+    border-radius: 6px;
+
+    &.alert {
+      background-color: rgba(255, 0, 0, 0.8);
+      color: white;
+
+      .flash-close {
+        color: white;
+        background-color: transparent;
+      }
+    }
+
+    &.notice {
+      background-color: rgba(0, 255, 40, 0.8);
+
+      .flash-close {
+        background-color: transparent;
+      }
+    }
+
+    .flash-close {
+      box-shadow: none;
+      border: none;
+      position: absolute;
+      right: 6px;
+    }
+  }
+}
