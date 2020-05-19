@@ -1,6 +1,6 @@
 class FlightCardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_flight_card, only: %i[edit update duplicate show]
+  before_action :load_flight_card, only: %i[edit update duplicate show destroy]
   before_action :set_launch_session
 
   def new
@@ -44,6 +44,12 @@ class FlightCardsController < ApplicationController
     else
       render :edit, alert: 'Something went wrong.'
     end
+  end
+
+  def destroy
+    authorize @flight_card
+    @flight_card.destroy!
+    redirect_to launch_flight_cards_path(params[:launch_id])
   end
 
   private

@@ -4,4 +4,7 @@
   <%= render partial: 'form', locals: {f: form} %>
   <%= form.submit 'Update', class: 'btn' %>
   <%= link_to 'Back', launch_flight_cards_path, class: 'btn-flat' %>
+  <%= link_to launch_flight_card_path(params[:launch_id]), class: 'btn-flat red white-text', method: :delete do %>
+    <i class="material-icons">delete</i>
+  <% end %>
 <% end %>
