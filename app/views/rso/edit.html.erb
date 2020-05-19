@@ -35,10 +35,17 @@
   <div class="card-content">
     <span class="card-title">RSO</span>
     <%= form_with url: launch_update_rso_card_path, model: @flight_card, method: :patch do |f| %>
+      Used pads:
+      <div class="pad-container">
+        <% @approved_pads.each do |pad| %>
+          <div class="pad-item"><%= pad %></div>
+        <% end %>
+      </div>
+      <br/>
       <label>
         <%= f.check_box :rso_approved, class: 'filled-in' %>
         <span>RSO Approved</span>
-      </label>
+      </label><br/>
       <div class="input-field">
         <%= f.telephone_field :pad_assignment %>
         <%= f.label :pad_assignment %>
