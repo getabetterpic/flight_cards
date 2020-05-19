@@ -1,6 +1,6 @@
 <h2>New Flight Card</h2>
 
-<%= form_with model: @flight_card, url: new_launch_flight_card_path(params[:launch_id]) do |form| %>
+<%= form_with model: @flight_card, url: launch_flight_cards_path(params[:launch_id]) do |form| %>
   <%= render partial: 'form', locals: {f: form} %>
   <%= form.submit 'Create', class: 'btn' %>
   <%= link_to 'Cancel', launch_flight_cards_path(params[:launch_id]), class: 'btn-flat' %>

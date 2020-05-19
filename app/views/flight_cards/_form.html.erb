@@ -32,7 +32,7 @@
     <span class="card-title">Rocket Info</span>
     <div class="input-field">
       <%= f.label :rocket_manufacturer %>
-      <%= f.text_field :rocket_manufacturer %>
+      <%= f.text_field :rocket_manufacturer, placeholder: 'Estes, LOC, etc.' %>
     </div>
     <div class="input-field">
       <%= f.label :rocket_name %>
@@ -123,12 +123,12 @@
     <span class="card-title">Motor Info</span>
     <!-- Motor info -->
     <div class="input-field">
-      <%= f.text_field :motor_manufacturer %>
+      <%= f.text_field :motor_manufacturer, placeholder: 'Estes, AeroTech, etc.' %>
       <%= f.label :motor_manufacturer %>
     </div>
     <div class="input-field">
-      <%= f.text_field :motor, autocapitalize: 'characters' %>
-      <%= f.label :motor, 'Motor(s) (A8-3, C6-5, etc.)' %>
+      <%= f.text_field :motor, autocapitalize: 'characters', placeholder: 'A8-3, C6-5, etc.' %>
+      <%= f.label :motor, 'Motor(s)' %>
     </div>
 
     <!-- Stages -->
