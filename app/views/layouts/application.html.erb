@@ -16,9 +16,9 @@
   <body class="blue-grey lighten-5">
     <div class="flash-container">
       <% flash.each do |type, message| %>
-        <div class="flash <%= type %>">
+        <div class="flash <%= type.to_s == 'alert' ? 'red accent-2' : 'green lighten-1' %>">
           <%= message %>
-          <button class="flash-close"><i class="material-icons">close</i></button>
+          <button class="flash-close <%= type == 'alert' ? 'red accent-2' : 'green lighten-1' %>"><i class="material-icons">close</i></button>
         </div>
       <% end %>
     </div>
