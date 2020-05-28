@@ -4,7 +4,6 @@ class LcoController < ApplicationController
 
   def index
     @flight_cards = @launch.flight_cards.waiting_for_lco.order(pad_assignment: :asc)
-    @flown = @launch.flight_cards.where(flown: true)
   end
 
   def update
@@ -21,6 +20,10 @@ class LcoController < ApplicationController
     @launches = Launch.all
   end
 
+  def flown
+    @flown = @launch.flight_cards.where(flown: true)
+  end
+
   def new_lco
     @launch = Launch.find(params[:launch_id])
   end
@@ -32,7 +35,8 @@ class LcoController < ApplicationController
       session[:lco_login] = true
       redirect_to launch_lco_cards_path(@launch)
     else
-      render :new_lco, alert: 'Something went wrong.'
+      flash[:alert] = "That key doesn't look right."
+      redirect_to launch_sign_in_lco_path(@launch)
     end
   end
 

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
       put 'flight_cards/:flight_card_id', to: 'lco#update'
       patch 'flight_cards/:flight_card_id', to: 'lco#update', as: :update_lco_card
       delete 'flight_cards/:flight_card_id', to: 'lco#reset', as: :reset_lco_card
+
+      get 'flown', to: 'lco#flown', as: :flown_flights
     end
   end
 end
