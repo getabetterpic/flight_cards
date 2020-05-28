@@ -4,7 +4,6 @@ class LcoController < ApplicationController
 
   def index
     @flight_cards = @launch.flight_cards.waiting_for_lco.order(pad_assignment: :asc)
-    @flown = @launch.flight_cards.where(flown: true)
   end
 
   def update
@@ -19,6 +18,10 @@ class LcoController < ApplicationController
 
   def launches
     @launches = Launch.all
+  end
+
+  def flown
+    @flown = @launch.flight_cards.where(flown: true)
   end
 
   def new_lco
