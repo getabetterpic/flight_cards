@@ -35,7 +35,8 @@ class LcoController < ApplicationController
       session[:lco_login] = true
       redirect_to launch_lco_cards_path(@launch)
     else
-      render :new_lco, alert: 'Something went wrong.'
+      flash[:alert] = "That key doesn't look right."
+      redirect_to launch_sign_in_lco_path(@launch)
     end
   end
 

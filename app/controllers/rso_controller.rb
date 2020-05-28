@@ -35,7 +35,8 @@ class RsoController < ApplicationController
       session[:rso_login] = true
       redirect_to launch_rso_cards_path(@launch)
     else
-      render :new_rso, alert: 'Something went wrong.'
+      flash[:alert] = "That key doesn't look right."
+      redirect_to launch_sign_in_rso_path(@launch)
     end
   end
 
