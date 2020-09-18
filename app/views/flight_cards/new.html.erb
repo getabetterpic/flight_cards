@@ -1,4 +1,4 @@
-<h2>New Flight Card</h2>
+<h1 class="h3">New Flight Card</h1>
 
 <%= form_with model: @flight_card, url: launch_flight_cards_path(params[:launch_id]) do |form| %>
   <%= render partial: 'form', locals: {f: form} %>
