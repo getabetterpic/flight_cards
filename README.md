@@ -1,5 +1,7 @@
 # Electronic Flight Cards
 
+[![Build Status](https://travis-ci.org/getabetterpic/flight_cards.svg?branch=master)](https://travis-ci.org/getabetterpic/flight_cards)
+
 ## Getting Started
 
 ### Install Ruby
