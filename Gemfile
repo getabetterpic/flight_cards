@@ -8,8 +8,12 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'
 gem 'pg'
-# Use Puma as the app server
-gem 'puma', '~> 4.1'
+
+group :production do
+  # Use Puma as the app server
+  gem 'puma', '~> 4.1'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -39,6 +43,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '>= 3.9'
   gem 'shoulda-matchers'
+end
+
+group :test do
+  gem 'rake'
 end
 
 group :development do

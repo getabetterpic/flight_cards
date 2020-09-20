@@ -6,6 +6,10 @@ class LaunchPolicy < ApplicationPolicy
     @launch = launch
   end
 
+  def new?
+    user.launch_admin?
+  end
+
   def index?
     user.present?
   end

@@ -2,6 +2,10 @@ class LaunchesController < ApplicationController
   before_action :authenticate_user!
   before_action :load_launch, only: %i[edit update]
 
+  rescue_from Pundit::NotAuthorizedError do
+    redirect_to launches_path, alert: I18n.t('unauthorized_error')
+  end
+
   def new
     @launch = current_user.launches.new
     authorize @launch
@@ -37,7 +41,7 @@ class LaunchesController < ApplicationController
   private
 
   def load_launch
-    @launch = current_user.launches.find(params[:id])
+    @launch = Launch.find(params[:id])
   end
 
   def launch_params

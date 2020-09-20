@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  generic_error: Something went wrong.
+  unauthorized_error: You're not authorized to do that.
+  rocket_already_flow: This rocket has already flown.
