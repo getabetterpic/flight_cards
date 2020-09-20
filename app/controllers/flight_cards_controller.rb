@@ -14,7 +14,7 @@ class FlightCardsController < ApplicationController
     if @flight_card.save
       redirect_to launch_flight_cards_path(params[:launch_id])
     else
-      render :new, alert: 'Something went wrong.'
+      render :new, alert: I18n.t('generic_error')
     end
   end
 
@@ -50,6 +50,9 @@ class FlightCardsController < ApplicationController
     authorize @flight_card
     @flight_card.destroy!
     redirect_to launch_flight_cards_path(params[:launch_id])
+  rescue Pundit::NotAuthorizedError
+    alert = @flight_card.flown? ? I18n.t('rocket_already_flow') : I18n.t('unauthorized_error')
+    redirect_to launch_flight_cards_path(params[:launch_id]), alert: alert
   end
 
   private
@@ -59,7 +62,7 @@ class FlightCardsController < ApplicationController
   end
 
   def load_flight_card
-    @flight_card = current_user.flight_cards.find(params[:id])
+    @flight_card = FlightCard.find_by(id: params[:id])
   end
 
   def flight_card_params
