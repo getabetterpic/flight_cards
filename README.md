@@ -1,6 +1,6 @@
 # Electronic Flight Cards
 
-[![Build Status](https://travis-ci.org/getabetterpic/flight_cards.svg?branch=master)](https://travis-ci.org/getabetterpic/flight_cards)
+[![Build Status](https://travis-ci.org/getabetterpic/flight_cards.svg?branch=main)](https://travis-ci.org/getabetterpic/flight_cards)
 
 ## Getting Started
 
